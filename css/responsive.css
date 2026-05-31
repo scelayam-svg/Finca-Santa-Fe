@@ -1,0 +1,180 @@
+/* ============================================================
+   FINCA SANTA FE — responsive.css
+   Media queries para diseño responsive
+   Breakpoints:
+     Mobile:  < 640px
+     Tablet:  640px – 1024px
+     Desktop: > 1024px
+   ============================================================ */
+
+/* ---- Tablet (640px – 1024px) ------------------------------ */
+@media (max-width: 1024px) {
+
+  .nav {
+    padding: 0 var(--espacio-lg);
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 34px;
+  }
+
+  .historia__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .historia__foto {
+    height: 260px;
+  }
+
+  .proceso__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .productos__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pedidos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+/* ---- Mobile (< 640px) ------------------------------------- */
+@media (max-width: 640px) {
+
+  /* Nav mobile */
+  .nav {
+    padding: 0 var(--espacio-sm);
+    height: auto;
+    min-height: 56px;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--espacio-sm) 0;
+  }
+
+  .nav__links.nav__links--open {
+    display: flex;
+  }
+
+  .nav__links a {
+    padding: 10px var(--espacio-sm);
+    border-top: 1px solid rgba(192, 221, 151, 0.1);
+    font-size: 15px;
+  }
+
+  /* Hero mobile */
+  .hero {
+    min-height: 420px;
+  }
+
+  .hero__content {
+    padding: var(--espacio-xl) var(--espacio-sm);
+  }
+
+  .hero__title {
+    font-size: 26px;
+  }
+
+  .hero__subtitle {
+    font-size: 14px;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Stats mobile */
+  .stats {
+    padding: var(--espacio-sm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espacio-sm);
+  }
+
+  /* Secciones mobile */
+  .section {
+    padding: var(--espacio-xl) 0;
+  }
+
+  .container {
+    padding: 0 var(--espacio-sm);
+  }
+
+  .section__title {
+    font-size: 22px;
+  }
+
+  /* Historia mobile */
+  .historia__foto {
+    height: 220px;
+  }
+
+  /* Proceso mobile */
+  .proceso__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proceso__card {
+    height: 160px;
+  }
+
+  /* Productos mobile — 1 columna */
+  .productos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Galería mobile */
+  .galeria__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galeria__img {
+    height: 120px;
+  }
+
+  /* Pedidos mobile */
+  .pedidos__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contacto mobile */
+  .contacto__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer mobile */
+  .footer__contenido {
+    flex-direction: column;
+    text-align: center;
+  }
+}

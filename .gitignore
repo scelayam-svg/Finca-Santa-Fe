@@ -1,0 +1,22 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (para cuando lleguemos al backend)
+node_modules/
+npm-debug.log
+.env
+.env.local
+
+# Build
+dist/
+build/
+
+# Logs
+*.log

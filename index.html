@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Finca Santa Fe — Quesos artesanales producidos en Coronado, Costa Rica. Mozzarella, Palmito, Pizzero, Semiduro, Tierno y Cremoso.">
+  <meta name="keywords" content="queso artesanal, Coronado, Costa Rica, mozzarella, palmito, finca">
+  <meta name="author" content="Finca Santa Fe">
+
+  <!-- Open Graph (para compartir en redes sociales) -->
+  <meta property="og:title" content="Finca Santa Fe — Quesos Artesanales">
+  <meta property="og:description" content="Producción familiar de quesos artesanales en Coronado, Costa Rica.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.fincasantafe.cr">
+
+  <title>Finca Santa Fe — Quesos Artesanales | Coronado, Costa Rica</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ========== NAVEGACIÓN ========== -->
+  <header class="header">
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+      <div class="nav__logo">
+        Finca <em>Santa Fe</em>
+      </div>
+
+      <!-- Menú hamburguesa (mobile) -->
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#pedidos">Pedidos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <a href="#pedidos" class="btn btn--ambar nav__cta">Hacer un pedido</a>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="inicio" aria-label="Bienvenida">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__badge">📍 Coronado, Costa Rica</span>
+      <h1 class="hero__title">
+        Queso artesanal,<br>
+        directo de <em>nuestra finca</em>
+      </h1>
+      <p class="hero__subtitle">
+        Producción familiar en las verdes montañas de Coronado.
+        Leche fresca, proceso artesanal y el sabor auténtico de Costa Rica.
+      </p>
+      <div class="hero__buttons">
+        <a href="#productos" class="btn btn--ambar">Ver productos</a>
+        <a href="#historia" class="btn btn--ghost">Nuestra historia</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS ========== -->
+  <div class="stats" aria-label="Datos de la finca">
+    <div class="stats__item">
+      <span class="stats__number">6</span>
+      <span class="stats__label">Tipos de queso</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__number">100%</span>
+      <span class="stats__label">Producción propia</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__number">Artesanal</span>
+      <span class="stats__label">Sin industrializar</span>
+    </div>
+    <div class="stats__item">
+      <span class="stats__number">Coronado</span>
+      <span class="stats__label">Origen garantizado</span>
+    </div>
+  </div>
+
+  <!-- ========== HISTORIA ========== -->
+  <section class="section" id="historia" aria-labelledby="historia-title">
+    <div class="container">
+      <span class="section__tag">Quiénes somos</span>
+      <h2 class="section__title" id="historia-title">
+        Una familia, una finca,<br>una pasión por el queso
+      </h2>
+      <div class="historia__grid">
+        <div class="historia__foto">
+          <img
+            src="assets/images/familia/familia.jpg"
+            alt="María, Ignacio y familia — Finca Santa Fe"
+            loading="lazy"
+          >
+        </div>
+        <div class="historia__texto">
+          <p>María e Ignacio compraron Finca Santa Fe con el sueño de criar ganado en las montañas de Coronado. Con el tiempo, y con mucho esfuerzo, descubrieron su verdadera vocación: elaborar quesos artesanales de la más alta calidad, directo del campo a la mesa.</p>
+          <p>Hoy, junto a su familia, producen 6 variedades de queso con leche fresca de su propio hato, manteniendo los más altos estándares de higiene y calidad en cada pieza que sale de la finca.</p>
+          <p>Una empresa familiar que nació del amor por la tierra y el compromiso con lo auténtico.</p>
+          <p class="historia__firma">— María y Nacho, Finca Santa Fe · Coronado</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESO ========== -->
+  <section class="section section--alt" id="proceso" aria-labelledby="proceso-title">
+    <div class="container">
+      <span class="section__tag">Cómo lo hacemos</span>
+      <h2 class="section__title" id="proceso-title">Del campo a tu mesa</h2>
+      <p class="section__subtitle">Cada queso comienza con leche fresca de nuestras vacas y termina en tus manos con el cuidado de siempre.</p>
+      <div class="proceso__grid">
+        <article class="proceso__card">
+          <img src="assets/images/proceso/vacas.jpg" alt="Nuestras vacas" loading="lazy">
+          <span class="proceso__label">1. Nuestras vacas</span>
+        </article>
+        <article class="proceso__card">
+          <img src="assets/images/proceso/leche.jpg" alt="Control de la leche" loading="lazy">
+          <span class="proceso__label">2. Control de la leche</span>
+        </article>
+        <article class="proceso__card">
+          <img src="assets/images/proceso/elaboracion.jpg" alt="Elaboración artesanal" loading="lazy">
+          <span class="proceso__label">3. Elaboración artesanal</span>
+        </article>
+        <article class="proceso__card">
+          <img src="assets/images/proceso/formacion.jpg" alt="Formación del queso" loading="lazy">
+          <span class="proceso__label">4. Formación</span>
+        </article>
+        <article class="proceso__card">
+          <img src="assets/images/proceso/curado.jpg" alt="Reposo y curado" loading="lazy">
+          <span class="proceso__label">5. Reposo y curado</span>
+        </article>
+        <article class="proceso__card">
+          <img src="assets/images/proceso/empaque.jpg" alt="Empaque y entrega" loading="lazy">
+          <span class="proceso__label">6. Empaque y entrega</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTOS ========== -->
+  <section class="section" id="productos" aria-labelledby="productos-title">
+    <div class="container">
+      <span class="section__tag">Lo que producimos</span>
+      <h2 class="section__title" id="productos-title">Nuestros quesos</h2>
+      <p class="section__subtitle">Elaborados con leche fresca de nuestro propio hato, sin conservantes ni aditivos artificiales.</p>
+      <div class="productos__grid">
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/mozzarella.jpg" alt="Queso Mozzarella Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Mozzarella</h3>
+            <p class="producto__desc">Suave, elástica y perfecta para pizzas, ensaladas y platillos calientes. Elaborada a mano.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Mozzarella">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/palmito.jpg" alt="Queso Palmito Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Palmito</h3>
+            <p class="producto__desc">Textura fibrosa y sabor suave. El queso más costarricense, ideal para chorreadas y gallos.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Palmito">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/pizzero.jpg" alt="Queso Pizzero Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Pizzero</h3>
+            <p class="producto__desc">Alto poder de fusión, sabor intenso al calor. Especialmente formulado para pizzas y gratinados.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Pizzero">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/semiduro.jpg" alt="Queso Semiduro Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Semiduro</h3>
+            <p class="producto__desc">Curado con paciencia, textura firme y sabor pronunciado. Ideal para tablas de quesos.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Semiduro">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/tierno.jpg" alt="Queso Tierno Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Tierno</h3>
+            <p class="producto__desc">Fresco, suave y cremoso. El favorito del desayuno tico, perfecto con pinto y tortillas.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Tierno">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="producto__card">
+          <div class="producto__img">
+            <img src="assets/images/productos/cremoso.jpg" alt="Queso Cremoso Finca Santa Fe" loading="lazy">
+          </div>
+          <div class="producto__info">
+            <h3 class="producto__nombre">Cremoso</h3>
+            <p class="producto__desc">Textura suave y untuosa, sabor delicado. Versátil para untar, cocinar o disfrutar solo.</p>
+            <div class="producto__footer">
+              <span class="producto__precio">₡ Consultar</span>
+              <button class="btn btn--pedir" data-producto="Cremoso">Pedir</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERÍA ========== -->
+  <section class="section section--alt" id="galeria" aria-labelledby="galeria-title">
+    <div class="container">
+      <span class="section__tag">La finca</span>
+      <h2 class="section__title" id="galeria-title">Conoce Finca Santa Fe</h2>
+      <p class="section__subtitle">Un vistazo a nuestra vida en el campo, nuestros animales y el proceso detrás de cada queso.</p>
+      <div class="galeria__grid">
+        <div class="galeria__img"><img src="assets/images/galeria/coronado.jpg" alt="Vista panorámica Coronado" loading="lazy"></div>
+        <div class="galeria__img"><img src="assets/images/galeria/porton.jpg" alt="Portón de la finca" loading="lazy"></div>
+        <div class="galeria__img"><img src="assets/images/galeria/vacas.jpg" alt="Vacas de la finca" loading="lazy"></div>
+        <div class="galeria__img"><img src="assets/images/galeria/produccion.jpg" alt="Proceso de producción" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PEDIDOS ========== -->
+  <section class="section" id="pedidos" aria-labelledby="pedidos-title">
+    <div class="container">
+      <span class="section__tag">Pedidos en línea</span>
+      <h2 class="section__title" id="pedidos-title">Hacé tu pedido</h2>
+      <p class="section__subtitle">Completá el formulario y coordinamos la entrega por WhatsApp.</p>
+      <div class="pedidos__grid">
+
+        <form class="pedido__form" id="pedidoForm" novalidate>
+          <div class="form__group">
+            <label class="form__label" for="nombre">Tu nombre *</label>
+            <input class="form__input" type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Rodríguez" required>
+            <span class="form__error" id="error-nombre"></span>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="telefono">Tu WhatsApp *</label>
+            <input class="form__input" type="tel" id="telefono" name="telefono" placeholder="+506 8888-8888" required>
+            <span class="form__error" id="error-telefono"></span>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="producto">Producto *</label>
+            <select class="form__input form__select" id="producto" name="producto" required>
+              <option value="">Seleccioná un queso</option>
+              <option value="Mozzarella">Mozzarella</option>
+              <option value="Palmito">Palmito</option>
+              <option value="Pizzero">Pizzero</option>
+              <option value="Semiduro">Semiduro</option>
+              <option value="Tierno">Tierno</option>
+              <option value="Cremoso">Cremoso</option>
+            </select>
+            <span class="form__error" id="error-producto"></span>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="cantidad">Cantidad</label>
+            <input class="form__input" type="text" id="cantidad" name="cantidad" placeholder="Ej: 1 unidad, 500g...">
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="entrega">Forma de entrega *</label>
+            <select class="form__input form__select" id="entrega" name="entrega" required>
+              <option value="">Seleccioná una opción</option>
+              <option value="Paso a recoger en la finca">Paso a recoger en la finca</option>
+              <option value="Entrega a domicilio">Entrega a domicilio</option>
+            </select>
+            <span class="form__error" id="error-entrega"></span>
+          </div>
+          <button type="submit" class="btn btn--whatsapp">
+            💬 Enviar pedido por WhatsApp
+          </button>
+        </form>
+
+        <div class="pedido__info">
+          <h3 class="pedido__info-title">¿Cómo funciona?</h3>
+          <ol class="pedido__pasos">
+            <li class="pedido__paso">
+              <span class="paso__num">1</span>
+              <span class="paso__texto">Completás el formulario con tu pedido</span>
+            </li>
+            <li class="pedido__paso">
+              <span class="paso__num">2</span>
+              <span class="paso__texto">Se genera un mensaje directo a nuestro WhatsApp</span>
+            </li>
+            <li class="pedido__paso">
+              <span class="paso__num">3</span>
+              <span class="paso__texto">María o Nacho confirman disponibilidad y precio</span>
+            </li>
+            <li class="pedido__paso">
+              <span class="paso__num">4</span>
+              <span class="paso__texto">Coordinamos entrega o pasás a recoger en la finca</span>
+            </li>
+          </ol>
+          <div class="pedido__pagos">
+            <p class="pedido__pagos-title">Métodos de pago</p>
+            <p>💵 Efectivo &nbsp;&nbsp; 📱 SINPE Móvil</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACTO ========== -->
+  <section class="section section--dark" id="contacto" aria-labelledby="contacto-title">
+    <div class="container">
+      <span class="section__tag section__tag--light">Contacto</span>
+      <h2 class="section__title section__title--light" id="contacto-title">Encontranos en Coronado</h2>
+      <p class="section__subtitle section__subtitle--light">Escribinos al WhatsApp o pasá a visitarnos a la finca.</p>
+      <div class="contacto__grid">
+        <div class="contacto__card">
+          <span class="contacto__icon">💬</span>
+          <h3 class="contacto__titulo">WhatsApp</h3>
+          <p class="contacto__valor">+506 XXXX-XXXX</p>
+        </div>
+        <div class="contacto__card">
+          <span class="contacto__icon">📍</span>
+          <h3 class="contacto__titulo">Ubicación</h3>
+          <p class="contacto__valor">Coronado, San José, Costa Rica</p>
+        </div>
+        <div class="contacto__card">
+          <span class="contacto__icon">🕐</span>
+          <h3 class="contacto__titulo">Atención</h3>
+          <p class="contacto__valor">Lun – Sáb · Por coordinar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__contenido">
+      <p class="footer__logo">Finca <em>Santa Fe</em> · Coronado, Costa Rica</p>
+      <p class="footer__copy">© 2025 · Todos los derechos reservados · www.fincasantafe.cr</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/whatsapp.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
