@@ -401,7 +401,7 @@ ul, ol {
   border-radius: var(--radio-md);
   overflow: hidden;
   position: relative;
-  height: 180px;
+  height: 220px;
 }
 
 .proceso__card img {
