@@ -50,6 +50,39 @@
     grid-template-columns: 1fr;
     max-width: 400px;
   }
+
+  .section__title {
+    font-size: 26px;
+  }
+
+  .section__subtitle {
+    font-size: 15px;
+  }
+
+  .producto__nombre {
+    font-size: 16px;
+  }
+
+  .producto__desc {
+    font-size: 13px;
+  }
+
+  .historia__texto p {
+    font-size: 15px;
+  }
+
+  .paso__texto {
+    font-size: 14px;
+  }
+
+  .stats__number {
+    font-size: 20px;
+  }
+
+  .stats__label {
+    font-size: 13px;
+  }
+
 }
 
 /* ---- Mobile (< 640px) ------------------------------------- */
