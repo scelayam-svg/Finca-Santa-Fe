@@ -4,7 +4,7 @@
  */
 
 // Número de WhatsApp de la finca (formato internacional sin + ni espacios)
-const WHATSAPP_NUMBER = '50688888888'; // ← Actualizar con el número real
+const WHATSAPP_NUMBER = '50683284658'; // ← Actualizar con el número real
 
 /**
  * Genera el mensaje de WhatsApp con los datos del formulario
