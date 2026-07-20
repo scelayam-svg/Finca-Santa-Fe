@@ -308,26 +308,48 @@
       <h2 class="section__title section__title--light" id="contacto-title">Encontranos en Coronado</h2>
       <p class="section__subtitle section__subtitle--light">Escribinos al WhatsApp o pasá a visitarnos a la finca.</p>
       <div class="contacto__grid">
-        <a class="contacto__card contacto__card--link" href="https://wa.me/50683284658" target="_blank" rel="noopener">
-          <span class="contacto__icon">
+        <a class="contacto__card contacto__card--whatsapp" href="https://wa.me/50683284658" target="_blank" rel="noopener">
+          <span class="contacto__icon contacto__icon--grande">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
           </span>
-          <h3 class="contacto__titulo">WhatsApp</h3>
-          <p class="contacto__valor">+506 8328-4658</p>
+          <div class="contacto__whatsapp-texto">
+            <h3 class="contacto__titulo contacto__titulo--grande">Escribinos por WhatsApp</h3>
+            <p class="contacto__valor contacto__valor--grande">+506 8328-4658</p>
+            <span class="contacto__badge-online">
+              <span class="contacto__punto-online"></span>
+              Respondemos rápido
+            </span>
+          </div>
         </a>
-        <a class="contacto__card contacto__card--link" href="https://www.google.com/maps/search/?api=1&query=Coronado+San+Jos%C3%A9+Costa+Rica" target="_blank" rel="noopener">
-          <span class="contacto__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          </span>
-          <h3 class="contacto__titulo">Ubicación</h3>
-          <p class="contacto__valor">Coronado, San José, Costa Rica</p>
+
+        <a class="contacto__card contacto__card--mapa" href="https://www.google.com/maps/search/?api=1&query=Coronado+San+Jos%C3%A9+Costa+Rica" target="_blank" rel="noopener" aria-label="Ver ubicación en Google Maps">
+          <iframe
+            class="contacto__mapa-iframe"
+            src="https://www.google.com/maps?q=Coronado,San+Jos%C3%A9,Costa+Rica&output=embed"
+            loading="lazy"
+            title="Ubicación de Finca Santa Fé en Coronado"
+            aria-hidden="true"
+            tabindex="-1">
+          </iframe>
+          <div class="contacto__mapa-overlay">
+            <span class="contacto__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <h3 class="contacto__titulo">Ubicación</h3>
+              <p class="contacto__valor">Coronado, San José, Costa Rica</p>
+            </div>
+          </div>
         </a>
-        <div class="contacto__card">
+
+        <div class="contacto__card contacto__card--horario">
           <span class="contacto__icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           </span>
-          <h3 class="contacto__titulo">Atención</h3>
-          <p class="contacto__valor">Lun – Sáb · Por coordinar</p>
+          <div>
+            <h3 class="contacto__titulo">Atención</h3>
+            <p class="contacto__valor">Lun – Sáb · Por coordinar</p>
+          </div>
         </div>
       </div>
     </div>

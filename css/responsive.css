@@ -89,7 +89,46 @@
 
   .contacto__grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    grid-auto-rows: auto;
+    max-width: 480px;
+  }
+
+  .contacto__card--whatsapp,
+  .contacto__card--mapa,
+  .contacto__card--horario {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .contacto__card--whatsapp {
+    padding: var(--espacio-lg);
+  }
+
+  .contacto__icon--grande {
+    width: 76px;
+    height: 76px;
+  }
+
+  .contacto__icon--grande svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contacto__titulo--grande {
+    font-size: 26px;
+  }
+
+  .contacto__valor--grande {
+    font-size: 19px;
+  }
+
+  .contacto__card--mapa {
+    height: 200px;
+    position: relative;
+  }
+
+  .contacto__card--horario {
+    padding: var(--espacio-md);
   }
 
   .section__title {
@@ -244,9 +283,9 @@
     grid-template-columns: 1fr;
   }
 
-  /* Contacto mobile */
-  .contacto__grid {
-    grid-template-columns: 1fr;
+  /* Contacto mobile — ya colapsa a 1 columna desde el breakpoint de tablet */
+  .contacto__card--mapa {
+    height: 180px;
   }
 
   .pedido__pagos-lista {
