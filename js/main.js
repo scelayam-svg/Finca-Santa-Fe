@@ -48,27 +48,39 @@ function inicializarScrollActivo() {
 }
 
 /**
- * Animación de entrada para las tarjetas de productos y proceso
+ * Animación de entrada al hacer scroll. Se expone `reobservarAnimaciones`
+ * en window para que otros scripts (ej: productos.js, que agrega tarjetas
+ * después de un fetch) puedan sumar elementos nuevos al mismo observer.
  */
-function inicializarAnimaciones() {
-  const elementos = document.querySelectorAll(
-    '.producto__card, .proceso__card, .galeria__item, .contacto__card'
-  );
+let observadorEntrada = null;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+function obtenerObservadorEntrada() {
+  if (!observadorEntrada) {
+    observadorEntrada = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observadorEntrada.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+  }
+  return observadorEntrada;
+}
 
-  elementos.forEach(el => {
+function observarParaAnimar(selector) {
+  const observer = obtenerObservadorEntrada();
+  document.querySelectorAll(selector).forEach(el => {
     el.classList.add('animar-entrada');
     observer.observe(el);
   });
 }
+
+function inicializarAnimaciones() {
+  observarParaAnimar('.producto__card, .proceso__card, .galeria__item, .contacto__card');
+}
+
+window.reobservarAnimaciones = observarParaAnimar;
 
 /**
  * Parallax sutil en la imagen de fondo del hero al hacer scroll.

@@ -805,6 +805,14 @@ svg {
   color: var(--color-verde-nav);
 }
 
+.productos__cargando {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-size: 14px;
+  padding: var(--espacio-xl) 0;
+}
+
 
 /* ---- Galería (collage flotante tipo polaroid) -------------- */
 .galeria__collage {

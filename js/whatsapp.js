@@ -75,23 +75,45 @@ function mostrarErrores(errores) {
 }
 
 /**
+ * Guarda el pedido en el backend. No bloquea ni retrasa la apertura de
+ * WhatsApp — si el backend está caído o sin internet, el pedido igual
+ * llega por WhatsApp normalmente, solo no queda registrado en la base.
+ * @param {Object} datos
+ */
+async function guardarPedidoEnBackend(datos) {
+  try {
+    const respuesta = await fetch(`${API_BASE_URL}/api/pedidos`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+    });
+    if (!respuesta.ok) {
+      console.warn('⚠️ El backend rechazó el pedido:', respuesta.status);
+    }
+  } catch (error) {
+    console.warn('⚠️ No se pudo guardar el pedido en el backend (sigue yendo por WhatsApp):', error.message);
+  }
+}
+
+/**
  * Inicializa el formulario de pedidos
  */
 function inicializarFormularioPedido() {
   const form = document.getElementById('pedidoForm');
   if (!form) return;
 
-  // Manejar clic en botones "Pedir" de las tarjetas de productos
-  document.querySelectorAll('.btn--pedir').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const producto = btn.dataset.producto;
-      const selectProducto = document.getElementById('producto');
-      if (selectProducto) {
-        selectProducto.value = producto;
-      }
-      // Scroll al formulario
-      document.getElementById('pedidos').scrollIntoView({ behavior: 'smooth' });
-    });
+  // Manejar clic en botones "Pedir" con delegación de eventos — así funciona
+  // también con tarjetas de producto agregadas después (ver productos.js)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn--pedir');
+    if (!btn) return;
+
+    const producto = btn.dataset.producto;
+    const selectProducto = document.getElementById('producto');
+    if (selectProducto) {
+      selectProducto.value = producto;
+    }
+    document.getElementById('pedidos').scrollIntoView({ behavior: 'smooth' });
   });
 
   // Manejar envío del formulario
@@ -116,7 +138,9 @@ function inicializarFormularioPedido() {
     // Limpiar errores
     mostrarErrores({});
 
-    // Abrir WhatsApp
+    // Guardar en el backend (en paralelo, sin esperar) y abrir WhatsApp
+    guardarPedidoEnBackend(datos);
+
     const urlWhatsApp = generarMensajeWhatsApp(datos);
     window.open(urlWhatsApp, '_blank');
 

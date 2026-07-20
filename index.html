@@ -183,93 +183,10 @@
       <span class="section__tag">Lo que producimos</span>
       <h2 class="section__title" id="productos-title">Nuestros quesos</h2>
       <p class="section__subtitle">Elaborados con leche fresca de nuestro propio hato, sin conservantes ni aditivos artificiales.</p>
-      <div class="productos__grid">
-
-        <article class="producto__card producto__card--featured">
-          <div class="producto__img">
-            <img src="assets/images/productos/mozzarella.jpg" alt="Queso Mozzarella Finca Santa Fé" loading="lazy" style="object-position: center 40%;">
-            <span class="producto__ribbon">El más pedido</span>
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Mozzarella</h3>
-            <p class="producto__desc">Suave, elástica y perfecta para pizzas, ensaladas y platillos calientes. Elaborada a mano.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Mozzarella">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto__card">
-          <div class="producto__img">
-            <img src="assets/images/productos/palmito.jpg" alt="Queso Palmito Finca Santa Fé" loading="lazy" style="object-position: center 40%;">
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Palmito</h3>
-            <p class="producto__desc">Textura fibrosa y sabor suave. El queso más costarricense, ideal para chorreadas y gallos.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Palmito">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto__card">
-          <div class="producto__img">
-            <img src="assets/images/productos/pizzero.jpg" alt="Queso Pizzero Finca Santa Fé" loading="lazy" style="object-position: center 50%;">
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Pizzero</h3>
-            <p class="producto__desc">Alto poder de fusión, sabor intenso al calor. Especialmente formulado para pizzas y gratinados.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Pizzero">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto__card">
-          <div class="producto__img">
-            <img src="assets/images/productos/semiduro.jpg" alt="Queso Semiduro Finca Santa Fé" loading="lazy" style="object-position: center 40%;">
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Semiduro</h3>
-            <p class="producto__desc">Curado con paciencia, textura firme y sabor pronunciado. Ideal para tablas de quesos.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Semiduro">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto__card">
-          <div class="producto__img">
-            <img src="assets/images/productos/tierno.jpg" alt="Queso Tierno Finca Santa Fé" loading="lazy">
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Tierno</h3>
-            <p class="producto__desc">Fresco, suave y cremoso. El favorito del desayuno tico, perfecto con pinto y tortillas.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Tierno">Pedir</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="producto__card">
-          <div class="producto__img">
-            <img src="assets/images/productos/cremoso.jpg" alt="Queso Cremoso Finca Santa Fé" loading="lazy" style="object-position: center 35%;">
-          </div>
-          <div class="producto__info">
-            <h3 class="producto__nombre">Cremoso</h3>
-            <p class="producto__desc">Textura suave y untuosa, sabor delicado. Versátil para untar, cocinar o disfrutar solo.</p>
-            <div class="producto__footer">
-              <span class="producto__precio">₡ Consultar</span>
-              <button class="btn btn--pedir" data-producto="Cremoso">Pedir</button>
-            </div>
-          </div>
-        </article>
-
+      <!-- Las tarjetas se generan dinámicamente desde la API (ver js/productos.js).
+           Si el backend no responde, se muestra un set de respaldo automáticamente. -->
+      <div class="productos__grid" id="productosGrid" aria-live="polite" aria-busy="true">
+        <p class="productos__cargando">Cargando productos…</p>
       </div>
     </div>
   </section>
@@ -420,6 +337,8 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/productos.js"></script>
   <script src="js/whatsapp.js"></script>
   <script src="js/main.js"></script>
 
