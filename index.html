@@ -63,7 +63,10 @@
   <section class="hero" id="inicio" aria-label="Bienvenida">
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__badge">📍 Coronado, Costa Rica</span>
+      <span class="hero__badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Coronado, Costa Rica
+      </span>
       <h1 class="hero__title">
         Queso artesanal,<br>
         directo de <em>nuestra finca</em>
@@ -282,12 +285,12 @@
           <div class="form__group">
             <label class="form__label" for="nombre">Tu nombre *</label>
             <input class="form__input" type="text" id="nombre" name="nombre" placeholder="Ej: Carlos Rodríguez" required>
-            <span class="form__error" id="error-nombre"></span>
+            <span class="form__error" id="error-nombre" role="alert" aria-live="polite"></span>
           </div>
           <div class="form__group">
             <label class="form__label" for="telefono">Tu WhatsApp *</label>
             <input class="form__input" type="tel" id="telefono" name="telefono" placeholder="+506 8888-8888" required>
-            <span class="form__error" id="error-telefono"></span>
+            <span class="form__error" id="error-telefono" role="alert" aria-live="polite"></span>
           </div>
           <div class="form__group">
             <label class="form__label" for="producto">Producto *</label>
@@ -300,7 +303,7 @@
               <option value="Tierno">Tierno</option>
               <option value="Cremoso">Cremoso</option>
             </select>
-            <span class="form__error" id="error-producto"></span>
+            <span class="form__error" id="error-producto" role="alert" aria-live="polite"></span>
           </div>
           <div class="form__group">
             <label class="form__label" for="cantidad">Cantidad</label>
@@ -313,10 +316,11 @@
               <option value="Paso a recoger en la finca">Paso a recoger en la finca</option>
               <option value="Entrega a domicilio">Entrega a domicilio</option>
             </select>
-            <span class="form__error" id="error-entrega"></span>
+            <span class="form__error" id="error-entrega" role="alert" aria-live="polite"></span>
           </div>
           <button type="submit" class="btn btn--whatsapp">
-            💬 Enviar pedido por WhatsApp
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.79 2.4a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.24-8.23 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.18 8.18 0 0 1-1.26-4.37c0-4.55 3.72-8.24 8.26-8.24Zm-4.5 4.62c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.7 2.68 4.19 3.7 2.07.85 2.49.68 2.94.64.45-.04 1.45-.6 1.65-1.17.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.46-.28-.24-.12-1.45-.72-1.68-.8-.22-.08-.39-.12-.55.12-.16.24-.63.8-.78.96-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.35-.77-1.84-.2-.48-.4-.42-.55-.42Z"/></svg>
+            Enviar pedido por WhatsApp
           </button>
         </form>
 
@@ -342,7 +346,16 @@
           </ol>
           <div class="pedido__pagos">
             <p class="pedido__pagos-title">Métodos de pago</p>
-            <p>💵 Efectivo &nbsp;&nbsp; 📱 SINPE Móvil</p>
+            <div class="pedido__pagos-lista">
+              <span class="pedido__pagos-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
+                Efectivo
+              </span>
+              <span class="pedido__pagos-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+                SINPE Móvil
+              </span>
+            </div>
           </div>
         </div>
 
@@ -358,17 +371,23 @@
       <p class="section__subtitle section__subtitle--light">Escribinos al WhatsApp o pasá a visitarnos a la finca.</p>
       <div class="contacto__grid">
         <a class="contacto__card contacto__card--link" href="https://wa.me/50683284658" target="_blank" rel="noopener">
-          <span class="contacto__icon">💬</span>
+          <span class="contacto__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+          </span>
           <h3 class="contacto__titulo">WhatsApp</h3>
           <p class="contacto__valor">+506 8328-4658</p>
         </a>
         <a class="contacto__card contacto__card--link" href="https://www.google.com/maps/search/?api=1&query=Coronado+San+Jos%C3%A9+Costa+Rica" target="_blank" rel="noopener">
-          <span class="contacto__icon">📍</span>
+          <span class="contacto__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
           <h3 class="contacto__titulo">Ubicación</h3>
           <p class="contacto__valor">Coronado, San José, Costa Rica</p>
         </a>
         <div class="contacto__card">
-          <span class="contacto__icon">🕐</span>
+          <span class="contacto__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </span>
           <h3 class="contacto__titulo">Atención</h3>
           <p class="contacto__valor">Lun – Sáb · Por coordinar</p>
         </div>

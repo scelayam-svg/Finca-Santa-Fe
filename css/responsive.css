@@ -18,8 +18,12 @@
     display: none;
   }
 
+  .hero {
+    min-height: 480px;
+  }
+
   .hero__title {
-    font-size: 34px;
+    font-size: 38px;
   }
 
   .historia__grid {
@@ -130,7 +134,7 @@
   }
 
   .hero__title {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .hero__subtitle {
@@ -203,6 +207,11 @@
   /* Contacto mobile */
   .contacto__grid {
     grid-template-columns: 1fr;
+  }
+
+  .pedido__pagos-lista {
+    flex-wrap: wrap;
+    gap: var(--espacio-sm);
   }
 
   /* Footer mobile */
