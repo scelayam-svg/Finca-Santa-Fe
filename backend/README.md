@@ -45,17 +45,28 @@ http://localhost:4000/api/productos
 |--------|-------------------|------------------------------------------------|
 | GET    | `/api/health`     | Verifica que el servidor está vivo            |
 | GET    | `/api/productos`  | Lista los productos activos (para el frontend)|
-| POST   | `/api/pedidos`    | Guarda un pedido nuevo                        |
-| GET    | `/api/pedidos`    | Lista los últimos 200 pedidos                 |
+| POST   | `/api/pedidos`    | Guarda un pedido nuevo (público, sin API key) |
+| GET    | `/api/pedidos`    | Lista los últimos 200 pedidos — **requiere API key** |
 
-## ⚠️ Nota de seguridad importante
+## Ver la lista de pedidos (GET /api/pedidos)
 
-`GET /api/pedidos` hoy **no tiene login** — cualquiera que conozca la URL
-podría ver los pedidos (nombres, teléfonos). Está bien para desarrollo y
-pruebas, pero **antes de publicar el sitio en producción** hay que agregar
-al menos una clave simple (API key) o autenticación básica a esa ruta.
-Avisame cuando lleguemos a esa etapa y lo resolvemos — no es mucho trabajo,
-pero no hay que olvidarlo.
+Esta ruta ya no es pública — hay que mandar tu clave secreta en un header
+llamado `x-api-key`. Formas simples de probarla:
+
+**Desde el navegador no se puede** (no permite mandar headers custom fácil).
+Usá una de estas opciones:
+
+- **Postman / Insomnia** (recomendado): armá una petición GET a
+  `http://localhost:4000/api/pedidos` y agregá el header
+  `x-api-key: <tu clave del .env>`
+- **PowerShell:**
+  ```powershell
+  Invoke-RestMethod -Uri "http://localhost:4000/api/pedidos" -Headers @{ "x-api-key" = "TU_CLAVE_AQUI" }
+  ```
+
+Si te pedís ver los pedidos seguido, puedo armarte más adelante una
+pantallita simple (HTML) que pida la clave una vez y los muestre en una
+tabla — avisame si te sirve.
 
 ## Cómo actualizar productos/precios
 

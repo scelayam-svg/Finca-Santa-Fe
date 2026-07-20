@@ -29,6 +29,12 @@ const pedidoSchema = new mongoose.Schema(
       required: true,
       enum: ['Paso a recoger en la finca', 'Entrega a domicilio'],
     },
+    // Solo obligatoria cuando entrega === 'Entrega a domicilio' (validado en la ruta)
+    direccion: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     estado: {
       type: String,
       enum: ['nuevo', 'confirmado', 'entregado', 'cancelado'],

@@ -12,13 +12,19 @@ const WHATSAPP_NUMBER = '50683284658'; // +506 8328-4658 — número real de la 
  * @returns {string} URL de WhatsApp con el mensaje codificado
  */
 function generarMensajeWhatsApp(datos) {
-  const mensaje = `🧀 *Pedido - Finca Santa Fe*
+  const esDomicilio = datos.entrega === 'Entrega a domicilio';
+  const lineaDireccion = datos.direccion ? `\n*Dirección:* ${datos.direccion}` : '';
+  const sugerenciaUbicacion = esDomicilio
+    ? '\n\n_Si querés, también podés compartir tu ubicación de WhatsApp acá mismo (ícono de clip → Ubicación) para que la entrega sea más precisa._'
+    : '';
 
-👤 *Nombre:* ${datos.nombre}
-📱 *WhatsApp:* ${datos.telefono}
-🧀 *Producto:* ${datos.producto}
-📦 *Cantidad:* ${datos.cantidad || 'No especificada'}
-🚗 *Entrega:* ${datos.entrega}
+  const mensaje = `*Pedido - Finca Santa Fe*
+
+*Nombre:* ${datos.nombre}
+*WhatsApp:* ${datos.telefono}
+*Producto:* ${datos.producto}
+*Cantidad:* ${datos.cantidad || 'No especificada'}
+*Entrega:* ${datos.entrega}${lineaDireccion}${sugerenciaUbicacion}
 
 _Mensaje generado desde www.fincasantafe.cr_`;
 
@@ -48,6 +54,10 @@ function validarFormulario(datos) {
 
   if (!datos.entrega) {
     errores.entrega = 'Por favor seleccioná la forma de entrega.';
+  }
+
+  if (datos.entrega === 'Entrega a domicilio' && (!datos.direccion || datos.direccion.trim().length < 5)) {
+    errores.direccion = 'Por favor ingresá la dirección de entrega.';
   }
 
   return {
@@ -102,6 +112,26 @@ function inicializarFormularioPedido() {
   const form = document.getElementById('pedidoForm');
   if (!form) return;
 
+  // Mostrar/ocultar el campo de dirección según la forma de entrega
+  const selectEntrega = document.getElementById('entrega');
+  const grupoDireccion = document.getElementById('grupoDireccion');
+  const inputDireccion = document.getElementById('direccion');
+
+  function actualizarCampoDireccion() {
+    const esDomicilio = selectEntrega.value === 'Entrega a domicilio';
+    grupoDireccion.hidden = !esDomicilio;
+    inputDireccion.required = esDomicilio;
+    if (!esDomicilio) {
+      inputDireccion.value = '';
+      document.getElementById('error-direccion').textContent = '';
+      inputDireccion.classList.remove('error');
+    }
+  }
+
+  if (selectEntrega) {
+    selectEntrega.addEventListener('change', actualizarCampoDireccion);
+  }
+
   // Manejar clic en botones "Pedir" con delegación de eventos — así funciona
   // también con tarjetas de producto agregadas después (ver productos.js)
   document.addEventListener('click', (e) => {
@@ -121,11 +151,12 @@ function inicializarFormularioPedido() {
     e.preventDefault();
 
     const datos = {
-      nombre:   document.getElementById('nombre').value.trim(),
-      telefono: document.getElementById('telefono').value.trim(),
-      producto: document.getElementById('producto').value,
-      cantidad: document.getElementById('cantidad').value.trim(),
-      entrega:  document.getElementById('entrega').value,
+      nombre:    document.getElementById('nombre').value.trim(),
+      telefono:  document.getElementById('telefono').value.trim(),
+      producto:  document.getElementById('producto').value,
+      cantidad:  document.getElementById('cantidad').value.trim(),
+      entrega:   document.getElementById('entrega').value,
+      direccion: document.getElementById('direccion').value.trim(),
     };
 
     const { valido, errores } = validarFormulario(datos);
@@ -146,6 +177,7 @@ function inicializarFormularioPedido() {
 
     // Resetear formulario
     form.reset();
+    actualizarCampoDireccion();
   });
 }
 
