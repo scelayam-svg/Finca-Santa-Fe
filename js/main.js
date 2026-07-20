@@ -52,25 +52,56 @@ function inicializarScrollActivo() {
  */
 function inicializarAnimaciones() {
   const elementos = document.querySelectorAll(
-    '.producto__card, .proceso__card, .galeria__img, .contacto__card'
+    '.producto__card, .proceso__card, .galeria__item, .contacto__card'
   );
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
   elementos.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    el.classList.add('animar-entrada');
     observer.observe(el);
   });
+}
+
+/**
+ * Parallax sutil en la imagen de fondo del hero al hacer scroll.
+ * Se desactiva automáticamente si el usuario prefiere menos movimiento,
+ * y usa requestAnimationFrame para no afectar el rendimiento.
+ */
+function inicializarParallaxHero() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const prefiereMenosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefiereMenosMovimiento) return;
+
+  const DESPLAZAMIENTO_MAX = 90; // px — mantiene el efecto sutil, no vertiginoso
+  let ticking = false;
+
+  function actualizar() {
+    const heroRect = hero.getBoundingClientRect();
+    // Solo calculamos mientras el hero es visible, evita trabajo innecesario
+    if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
+      const progreso = Math.min(Math.max(-heroRect.top, 0) / heroRect.height, 1);
+      const offset = progreso * DESPLAZAMIENTO_MAX;
+      hero.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(actualizar);
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /**
@@ -80,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarNavMobile();
   inicializarScrollActivo();
   inicializarAnimaciones();
+  inicializarParallaxHero();
 
   console.log('🌿 Finca Santa Fe — Sitio cargado correctamente');
 });

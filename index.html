@@ -24,7 +24,7 @@
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Estilos -->
   <link rel="stylesheet" href="css/styles.css">
@@ -78,6 +78,21 @@
       <div class="hero__buttons">
         <a href="#productos" class="btn btn--ambar">Ver productos</a>
         <a href="#historia" class="btn btn--ghost">Nuestra historia</a>
+      </div>
+    </div>
+    <div class="hero__collage" aria-hidden="true">
+      <div class="hero__collage-item hero__collage-item--1">
+        <img src="assets/images/proceso/elaboracion.jpg" alt="" loading="eager">
+      </div>
+      <div class="hero__collage-item hero__collage-item--2">
+        <img src="assets/images/productos/mozzarella.jpg" alt="" loading="lazy">
+      </div>
+      <div class="hero__collage-item hero__collage-item--3">
+        <img src="assets/images/galeria/vacas.jpg" alt="" loading="lazy">
+      </div>
+      <div class="hero__collage-badge">
+        <strong>6</strong>
+        <span>quesos artesanales</span>
       </div>
     </div>
   </section>
@@ -134,7 +149,7 @@
       <h2 class="section__title" id="proceso-title">Del campo a tu mesa</h2>
       <p class="section__subtitle">Cada queso comienza con leche fresca de nuestras vacas y termina en tus manos con el cuidado de siempre.</p>
       <div class="proceso__grid">
-        <article class="proceso__card">
+        <article class="proceso__card proceso__card--big">
           <img src="assets/images/proceso/vacas.jpg" alt="Nuestras vacas" loading="lazy" style="object-position: center 40%;">
           <span class="proceso__label">1. Nuestras vacas</span>
         </article>
@@ -143,16 +158,16 @@
           <span class="proceso__label">2. Control de la leche</span>
         </article>
         <article class="proceso__card">
-          <img src="assets/images/proceso/elaboracion.jpg" alt="Elaboración artesanal" loading="lazy" style="object-position: center 20%;">
-          <span class="proceso__label">3. Elaboración artesanal</span>
-        </article>
-        <article class="proceso__card">
           <img src="assets/images/proceso/formacion.jpg" alt="Formación del queso" loading="lazy" style="object-position: center 35%;">
           <span class="proceso__label">4. Formación</span>
         </article>
         <article class="proceso__card">
           <img src="assets/images/proceso/curado.jpg" alt="Reposo y curado" loading="lazy" style="object-position: center 25%;">
           <span class="proceso__label">5. Reposo y curado</span>
+        </article>
+        <article class="proceso__card proceso__card--wide">
+          <img src="assets/images/proceso/elaboracion.jpg" alt="Elaboración artesanal" loading="lazy" style="object-position: center 20%;">
+          <span class="proceso__label">3. Elaboración artesanal</span>
         </article>
         <article class="proceso__card">
           <img src="assets/images/proceso/empaque.jpg" alt="Empaque y entrega" loading="lazy" style="object-position: center 40%;">
@@ -170,9 +185,10 @@
       <p class="section__subtitle">Elaborados con leche fresca de nuestro propio hato, sin conservantes ni aditivos artificiales.</p>
       <div class="productos__grid">
 
-        <article class="producto__card">
+        <article class="producto__card producto__card--featured">
           <div class="producto__img">
             <img src="assets/images/productos/mozzarella.jpg" alt="Queso Mozzarella Finca Santa Fé" loading="lazy" style="object-position: center 40%;">
+            <span class="producto__ribbon">El más pedido</span>
           </div>
           <div class="producto__info">
             <h3 class="producto__nombre">Mozzarella</h3>
@@ -264,11 +280,11 @@
       <span class="section__tag">La finca</span>
       <h2 class="section__title" id="galeria-title">Conoce Finca Santa Fé</h2>
       <p class="section__subtitle">Un vistazo a nuestra vida en el campo, nuestros animales y el proceso detrás de cada queso.</p>
-      <div class="galeria__grid">
-        <div class="galeria__img"><img src="assets/images/galeria/coronado.jpg" alt="Vista panorámica Coronado" loading="lazy"></div>
-        <div class="galeria__img"><img src="assets/images/galeria/porton.jpg" alt="Portón de la finca" loading="lazy" style="object-position: center 25%;"></div>
-        <div class="galeria__img"><img src="assets/images/galeria/vacas.jpg" alt="Vacas de la finca" loading="lazy"></div>
-        <div class="galeria__img"><img src="assets/images/galeria/produccion.jpg" alt="Proceso de producción" loading="lazy" style="object-position: center 25%;"></div>
+      <div class="galeria__collage">
+        <div class="galeria__item galeria__item--1"><img src="assets/images/galeria/coronado.jpg" alt="Vista panorámica Coronado" loading="lazy"></div>
+        <div class="galeria__item galeria__item--2"><img src="assets/images/galeria/porton.jpg" alt="Portón de la finca" loading="lazy" style="object-position: center 25%;"></div>
+        <div class="galeria__item galeria__item--3"><img src="assets/images/galeria/vacas.jpg" alt="Vacas de la finca" loading="lazy"></div>
+        <div class="galeria__item galeria__item--4"><img src="assets/images/galeria/produccion.jpg" alt="Proceso de producción" loading="lazy" style="object-position: center 25%;"></div>
       </div>
     </div>
   </section>

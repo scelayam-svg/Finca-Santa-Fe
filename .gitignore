@@ -20,3 +20,8 @@ build/
 
 # Logs
 *.log
+
+
+# Python (skill ui-ux-pro-max)
+__pycache__/
+*.pyc
