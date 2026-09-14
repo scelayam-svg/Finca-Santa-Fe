@@ -1,5 +1,5 @@
 /**
- * FINCA SANTA FE — whatsapp.js
+ * FINCA SANTA FÉ — whatsapp.js
  * Maneja el formulario de pedidos y genera el mensaje de WhatsApp
  */
 
@@ -13,12 +13,16 @@ const WHATSAPP_NUMBER = '50683284658'; // +506 8328-4658 — número real de la 
  */
 function generarMensajeWhatsApp(datos) {
   const esDomicilio = datos.entrega === 'Entrega a domicilio';
-  const lineaDireccion = datos.direccion ? `\n*Dirección:* ${datos.direccion}` : '';
+
+  const lineaDireccion = datos.direccion
+    ? `\n*Dirección:* ${datos.direccion}`
+    : '';
+
   const sugerenciaUbicacion = esDomicilio
     ? '\n\n_Si querés, también podés compartir tu ubicación de WhatsApp acá mismo (ícono de clip → Ubicación) para que la entrega sea más precisa._'
     : '';
 
-  const mensaje = `*Pedido - Finca Santa Fe*
+  const mensaje = `*Pedido - Finca Santa Fé*
 
 *Nombre:* ${datos.nombre}
 *WhatsApp:* ${datos.telefono}
@@ -29,6 +33,7 @@ function generarMensajeWhatsApp(datos) {
 _Mensaje generado desde www.fincasantafe.cr_`;
 
   const mensajeCodificado = encodeURIComponent(mensaje);
+
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`;
 }
 
@@ -56,7 +61,10 @@ function validarFormulario(datos) {
     errores.entrega = 'Por favor seleccioná la forma de entrega.';
   }
 
-  if (datos.entrega === 'Entrega a domicilio' && (!datos.direccion || datos.direccion.trim().length < 5)) {
+  if (
+    datos.entrega === 'Entrega a domicilio' &&
+    (!datos.direccion || datos.direccion.trim().length < 5)
+  ) {
     errores.direccion = 'Por favor ingresá la dirección de entrega.';
   }
 
@@ -72,36 +80,72 @@ function validarFormulario(datos) {
  */
 function mostrarErrores(errores) {
   // Limpiar errores anteriores
-  document.querySelectorAll('.form__error').forEach(el => el.textContent = '');
-  document.querySelectorAll('.form__input').forEach(el => el.classList.remove('error'));
+  document
+    .querySelectorAll('.form__error')
+    .forEach(el => {
+      el.textContent = '';
+    });
+
+  document
+    .querySelectorAll('.form__input')
+    .forEach(el => {
+      el.classList.remove('error');
+    });
 
   // Mostrar nuevos errores
   Object.keys(errores).forEach(campo => {
-    const errorEl = document.getElementById(`error-${campo}`);
-    const inputEl = document.getElementById(campo);
-    if (errorEl) errorEl.textContent = errores[campo];
-    if (inputEl) inputEl.classList.add('error');
+    const errorEl =
+      document.getElementById(`error-${campo}`);
+
+    const inputEl =
+      document.getElementById(campo);
+
+    if (errorEl) {
+      errorEl.textContent = errores[campo];
+    }
+
+    if (inputEl) {
+      inputEl.classList.add('error');
+    }
   });
 }
 
 /**
- * Guarda el pedido en el backend. No bloquea ni retrasa la apertura de
- * WhatsApp — si el backend está caído o sin internet, el pedido igual
- * llega por WhatsApp normalmente, solo no queda registrado en la base.
+ * Guarda el pedido en el backend.
+ *
+ * No bloquea ni retrasa la apertura de WhatsApp:
+ * si el backend está caído o no hay conexión,
+ * el pedido igualmente continúa por WhatsApp.
+ *
  * @param {Object} datos
  */
 async function guardarPedidoEnBackend(datos) {
   try {
-    const respuesta = await fetch(`${API_BASE_URL}/api/pedidos`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(datos),
-    });
+    const respuesta = await fetch(
+      `${API_BASE_URL}/api/pedidos`,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify(datos)
+      }
+    );
+
     if (!respuesta.ok) {
-      console.warn('⚠️ El backend rechazó el pedido:', respuesta.status);
+      console.warn(
+        '⚠️ El backend rechazó el pedido:',
+        respuesta.status
+      );
     }
-  } catch (error) {
-    console.warn('⚠️ No se pudo guardar el pedido en el backend (sigue yendo por WhatsApp):', error.message);
+  }
+  catch (error) {
+    console.warn(
+      '⚠️ No se pudo guardar el pedido en el backend (sigue yendo por WhatsApp):',
+      error.message
+    );
   }
 }
 
@@ -109,77 +153,173 @@ async function guardarPedidoEnBackend(datos) {
  * Inicializa el formulario de pedidos
  */
 function inicializarFormularioPedido() {
-  const form = document.getElementById('pedidoForm');
-  if (!form) return;
+  const form =
+    document.getElementById('pedidoForm');
 
-  // Mostrar/ocultar el campo de dirección según la forma de entrega
-  const selectEntrega = document.getElementById('entrega');
-  const grupoDireccion = document.getElementById('grupoDireccion');
-  const inputDireccion = document.getElementById('direccion');
+  if (!form) {
+    return;
+  }
 
+  const selectEntrega =
+    document.getElementById('entrega');
+
+  const grupoDireccion =
+    document.getElementById('grupoDireccion');
+
+  const inputDireccion =
+    document.getElementById('direccion');
+
+  /**
+   * Mostrar/ocultar la dirección
+   * según la forma de entrega.
+   */
   function actualizarCampoDireccion() {
-    const esDomicilio = selectEntrega.value === 'Entrega a domicilio';
-    grupoDireccion.hidden = !esDomicilio;
-    inputDireccion.required = esDomicilio;
+    const esDomicilio =
+      selectEntrega.value === 'Entrega a domicilio';
+
+    grupoDireccion.hidden =
+      !esDomicilio;
+
+    inputDireccion.required =
+      esDomicilio;
+
     if (!esDomicilio) {
       inputDireccion.value = '';
-      document.getElementById('error-direccion').textContent = '';
-      inputDireccion.classList.remove('error');
+
+      document
+        .getElementById('error-direccion')
+        .textContent = '';
+
+      inputDireccion
+        .classList
+        .remove('error');
     }
   }
 
   if (selectEntrega) {
-    selectEntrega.addEventListener('change', actualizarCampoDireccion);
+    selectEntrega.addEventListener(
+      'change',
+      actualizarCampoDireccion
+    );
   }
 
-  // Manejar clic en botones "Pedir" con delegación de eventos — así funciona
-  // también con tarjetas de producto agregadas después (ver productos.js)
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn--pedir');
-    if (!btn) return;
+  /**
+   * Manejar botones "Pedir" mediante delegación.
+   *
+   * Esto permite que funcione también con productos
+   * insertados dinámicamente desde productos.js.
+   */
+  document.addEventListener(
+    'click',
+    e => {
+      const btn =
+        e.target.closest('.btn--pedir');
 
-    const producto = btn.dataset.producto;
-    const selectProducto = document.getElementById('producto');
-    if (selectProducto) {
-      selectProducto.value = producto;
+      if (!btn) {
+        return;
+      }
+
+      const producto =
+        btn.dataset.producto;
+
+      const selectProducto =
+        document.getElementById('producto');
+
+      if (selectProducto) {
+        selectProducto.value =
+          producto;
+      }
+
+      document
+        .getElementById('pedidos')
+        .scrollIntoView({
+          behavior: 'smooth'
+        });
     }
-    document.getElementById('pedidos').scrollIntoView({ behavior: 'smooth' });
-  });
+  );
 
-  // Manejar envío del formulario
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  /**
+   * Envío del formulario
+   */
+  form.addEventListener(
+    'submit',
+    e => {
+      e.preventDefault();
 
-    const datos = {
-      nombre:    document.getElementById('nombre').value.trim(),
-      telefono:  document.getElementById('telefono').value.trim(),
-      producto:  document.getElementById('producto').value,
-      cantidad:  document.getElementById('cantidad').value.trim(),
-      entrega:   document.getElementById('entrega').value,
-      direccion: document.getElementById('direccion').value.trim(),
-    };
+      const datos = {
+        nombre:
+          document
+            .getElementById('nombre')
+            .value
+            .trim(),
 
-    const { valido, errores } = validarFormulario(datos);
+        telefono:
+          document
+            .getElementById('telefono')
+            .value
+            .trim(),
 
-    if (!valido) {
-      mostrarErrores(errores);
-      return;
+        producto:
+          document
+            .getElementById('producto')
+            .value,
+
+        cantidad:
+          document
+            .getElementById('cantidad')
+            .value
+            .trim(),
+
+        entrega:
+          document
+            .getElementById('entrega')
+            .value,
+
+        direccion:
+          document
+            .getElementById('direccion')
+            .value
+            .trim()
+      };
+
+      const {
+        valido,
+        errores
+      } = validarFormulario(datos);
+
+      if (!valido) {
+        mostrarErrores(errores);
+        return;
+      }
+
+      // Limpiar errores anteriores
+      mostrarErrores({});
+
+      /*
+       * Guardamos en backend en paralelo.
+       * No esperamos la respuesta porque WhatsApp
+       * es el canal principal del pedido.
+       */
+      guardarPedidoEnBackend(datos);
+
+      const urlWhatsApp =
+        generarMensajeWhatsApp(datos);
+
+      window.open(
+        urlWhatsApp,
+        '_blank'
+      );
+
+      // Resetear formulario
+      form.reset();
+
+      actualizarCampoDireccion();
     }
-
-    // Limpiar errores
-    mostrarErrores({});
-
-    // Guardar en el backend (en paralelo, sin esperar) y abrir WhatsApp
-    guardarPedidoEnBackend(datos);
-
-    const urlWhatsApp = generarMensajeWhatsApp(datos);
-    window.open(urlWhatsApp, '_blank');
-
-    // Resetear formulario
-    form.reset();
-    actualizarCampoDireccion();
-  });
+  );
 }
 
 // Inicializar cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', inicializarFormularioPedido);
+document.addEventListener(
+  'DOMContentLoaded',
+  inicializarFormularioPedido
+);
