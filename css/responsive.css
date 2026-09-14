@@ -818,3 +818,273 @@
 }
 
 /* === MOBILE GALLERY REFINEMENT V2.1 END === */
+
+/* === DESIGN HEALTH REMEDIATION V1 START === */
+
+/*
+   Accessibility + hierarchy remediation.
+   Intentionally avoids structural redesign.
+*/
+
+
+/* ------------------------------------------------------------
+   ANCHOR / STICKY HEADER SAFETY
+   ------------------------------------------------------------ */
+
+section[id] {
+  scroll-margin-top: 104px;
+}
+
+#inicio {
+  scroll-margin-top: 0;
+}
+
+
+/* ------------------------------------------------------------
+   PRIMARY CTA CONTRAST
+
+   Previous:
+   white on #b7782e ≈ 3.66:1
+
+   Current:
+   white on #96601f > AA for normal text
+   ------------------------------------------------------------ */
+
+.btn--primary {
+  color: #ffffff;
+
+  background:
+    var(--color-gold-700);
+
+  box-shadow:
+    0 10px 24px
+    rgba(150, 96, 31, 0.20);
+}
+
+
+.btn--primary:hover {
+  background:
+    #7d4f19;
+
+  box-shadow:
+    0 14px 30px
+    rgba(125, 79, 25, 0.24);
+}
+
+
+/* ------------------------------------------------------------
+   PRODUCT CTA HIERARCHY
+
+   Product actions remain visible but no longer compete
+   with the principal gold / WhatsApp actions.
+   ------------------------------------------------------------ */
+
+.btn--pedir {
+  color:
+    var(--color-green-900);
+
+  background:
+    transparent;
+
+  border-color:
+    rgba(31, 52, 37, 0.32);
+
+  box-shadow:
+    none;
+}
+
+
+.btn--pedir:hover {
+  color:
+    #ffffff;
+
+  background:
+    var(--color-green-900);
+
+  border-color:
+    var(--color-green-900);
+
+  box-shadow:
+    none;
+}
+
+
+/* ------------------------------------------------------------
+   FUNCTIONAL MICROCOPY FLOOR
+   ------------------------------------------------------------ */
+
+.section__tag,
+.trust__eyebrow,
+.producto__ribbon,
+.historia__media-label span,
+.historia__values span,
+.galeria__item figcaption span,
+.pedido-info__payments > span,
+.form__header > span,
+.form__label,
+.form__privacy,
+.contacto__eyebrow,
+.contacto__action,
+.footer__copy,
+.footer__legal {
+  font-size:
+    max(
+      0.75rem,
+      12px
+    );
+}
+
+
+/*
+   Especially important information receives a slightly
+   stronger floor than decorative microcopy.
+*/
+
+.form__label,
+.form__privacy,
+.pedido-info__payments > span,
+.footer__copy,
+.footer__legal {
+  font-size:
+    max(
+      0.78rem,
+      12.5px
+    );
+}
+
+
+.hero__eyebrow,
+.hero__highlights li {
+  font-size:
+    max(
+      0.75rem,
+      12px
+    );
+}
+
+
+/* ------------------------------------------------------------
+   LESS TEMPLATE-LIKE SECTION RHYTHM
+
+   We keep useful orientation labels, but remove two
+   redundant kickers so every section does not begin identically.
+   ------------------------------------------------------------ */
+
+#historia .section__tag,
+#galeria .section__tag {
+  display:
+    none;
+}
+
+
+/*
+   Recover spacing after removing those labels.
+*/
+
+#historia .section__title,
+#galeria .section__title {
+  margin-top:
+    0;
+}
+
+
+/* ------------------------------------------------------------
+   LOW-HEIGHT DESKTOP HERO
+
+   Preserve the large hero normally, but prevent it from
+   overwhelming laptops with limited vertical space.
+   ------------------------------------------------------------ */
+
+@media (min-width: 901px) and (max-height: 720px) {
+
+  .hero__grid {
+    min-height:
+      calc(100vh - 78px);
+
+    padding:
+      2.25rem
+      0;
+  }
+
+
+  .hero__title {
+    font-size:
+      clamp(
+        3.25rem,
+        5vw,
+        4.5rem
+      );
+
+    letter-spacing:
+      -0.035em;
+  }
+
+
+  .hero__subtitle {
+    margin-top:
+      1rem;
+  }
+
+
+  .hero__actions {
+    margin-top:
+      1.25rem;
+  }
+
+
+  .hero__media {
+    min-height:
+      430px;
+
+    max-width:
+      460px;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   MOBILE LEGIBILITY
+   ------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+
+  .hero__eyebrow {
+    font-size:
+      0.75rem;
+  }
+
+
+  .hero__highlights li {
+    font-size:
+      0.75rem;
+  }
+
+
+  .historia__values span {
+    font-size:
+      0.72rem;
+
+    line-height:
+      1.35;
+  }
+
+
+  .galeria__item figcaption span {
+    font-size:
+      0.72rem;
+  }
+
+
+  .footer__copy,
+  .footer__legal {
+    font-size:
+      0.78rem;
+
+    line-height:
+      1.55;
+  }
+
+}
+
+/* === DESIGN HEALTH REMEDIATION V1 END === */

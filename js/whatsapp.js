@@ -49,8 +49,12 @@ function validarFormulario(datos) {
     errores.nombre = 'Por favor ingresá tu nombre.';
   }
 
-  if (!datos.telefono || datos.telefono.trim().length < 8) {
-    errores.telefono = 'Por favor ingresá un número de WhatsApp válido.';
+  const telefonoNormalizado =
+    datos.telefono.replace(/\D/g, '');
+
+  if (!/^\d{8}$/.test(telefonoNormalizado)) {
+    errores.telefono =
+      'Ingresá exactamente 8 dígitos de WhatsApp, sin +506.';
   }
 
   if (!datos.producto) {
