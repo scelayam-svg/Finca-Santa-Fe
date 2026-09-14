@@ -1,10 +1,10 @@
 /**
- * FINCA SANTA FE — whatsapp.js
+ * FINCA SANTA FE â€” whatsapp.js
  * Maneja el formulario de pedidos y genera el mensaje de WhatsApp
  */
 
-// Número de WhatsApp de la finca (formato internacional sin + ni espacios)
-const WHATSAPP_NUMBER = '50683284658'; // +506 8328-4658 — número real de la finca
+// NÃºmero de WhatsApp de la finca (formato internacional sin + ni espacios)
+const WHATSAPP_NUMBER = '50683284658'; // +506 8328-4658 â€” nÃºmero real de la finca
 
 /**
  * Genera el mensaje de WhatsApp con los datos del formulario
@@ -13,12 +13,12 @@ const WHATSAPP_NUMBER = '50683284658'; // +506 8328-4658 — número real de la 
  */
 function generarMensajeWhatsApp(datos) {
   const esDomicilio = datos.entrega === 'Entrega a domicilio';
-  const lineaDireccion = datos.direccion ? `\n*Dirección:* ${datos.direccion}` : '';
+  const lineaDireccion = datos.direccion ? `\n*DirecciÃ³n:* ${datos.direccion}` : '';
   const sugerenciaUbicacion = esDomicilio
-    ? '\n\n_Si querés, también podés compartir tu ubicación de WhatsApp acá mismo (ícono de clip → Ubicación) para que la entrega sea más precisa._'
+    ? '\n\n_Si querÃ©s, tambiÃ©n podÃ©s compartir tu ubicaciÃ³n de WhatsApp acÃ¡ mismo (Ã­cono de clip â†’ UbicaciÃ³n) para que la entrega sea mÃ¡s precisa._'
     : '';
 
-  const mensaje = `*Pedido - Finca Santa Fe*
+  const mensaje = `*Pedido - Finca Santa Fé*
 
 *Nombre:* ${datos.nombre}
 *WhatsApp:* ${datos.telefono}
@@ -41,23 +41,23 @@ function validarFormulario(datos) {
   const errores = {};
 
   if (!datos.nombre || datos.nombre.trim().length < 2) {
-    errores.nombre = 'Por favor ingresá tu nombre.';
+    errores.nombre = 'Por favor ingresÃ¡ tu nombre.';
   }
 
   if (!datos.telefono || datos.telefono.trim().length < 8) {
-    errores.telefono = 'Por favor ingresá un número de WhatsApp válido.';
+    errores.telefono = 'Por favor ingresÃ¡ un nÃºmero de WhatsApp vÃ¡lido.';
   }
 
   if (!datos.producto) {
-    errores.producto = 'Por favor seleccioná un producto.';
+    errores.producto = 'Por favor seleccionÃ¡ un producto.';
   }
 
   if (!datos.entrega) {
-    errores.entrega = 'Por favor seleccioná la forma de entrega.';
+    errores.entrega = 'Por favor seleccionÃ¡ la forma de entrega.';
   }
 
   if (datos.entrega === 'Entrega a domicilio' && (!datos.direccion || datos.direccion.trim().length < 5)) {
-    errores.direccion = 'Por favor ingresá la dirección de entrega.';
+    errores.direccion = 'Por favor ingresÃ¡ la direcciÃ³n de entrega.';
   }
 
   return {
@@ -67,7 +67,7 @@ function validarFormulario(datos) {
 }
 
 /**
- * Muestra los errores de validación en el formulario
+ * Muestra los errores de validaciÃ³n en el formulario
  * @param {Object} errores
  */
 function mostrarErrores(errores) {
@@ -86,7 +86,7 @@ function mostrarErrores(errores) {
 
 /**
  * Guarda el pedido en el backend. No bloquea ni retrasa la apertura de
- * WhatsApp — si el backend está caído o sin internet, el pedido igual
+ * WhatsApp â€” si el backend estÃ¡ caÃ­do o sin internet, el pedido igual
  * llega por WhatsApp normalmente, solo no queda registrado en la base.
  * @param {Object} datos
  */
@@ -98,10 +98,10 @@ async function guardarPedidoEnBackend(datos) {
       body: JSON.stringify(datos),
     });
     if (!respuesta.ok) {
-      console.warn('⚠️ El backend rechazó el pedido:', respuesta.status);
+      console.warn('âš ï¸ El backend rechazÃ³ el pedido:', respuesta.status);
     }
   } catch (error) {
-    console.warn('⚠️ No se pudo guardar el pedido en el backend (sigue yendo por WhatsApp):', error.message);
+    console.warn('âš ï¸ No se pudo guardar el pedido en el backend (sigue yendo por WhatsApp):', error.message);
   }
 }
 
@@ -112,7 +112,7 @@ function inicializarFormularioPedido() {
   const form = document.getElementById('pedidoForm');
   if (!form) return;
 
-  // Mostrar/ocultar el campo de dirección según la forma de entrega
+  // Mostrar/ocultar el campo de direcciÃ³n segÃºn la forma de entrega
   const selectEntrega = document.getElementById('entrega');
   const grupoDireccion = document.getElementById('grupoDireccion');
   const inputDireccion = document.getElementById('direccion');
@@ -132,8 +132,8 @@ function inicializarFormularioPedido() {
     selectEntrega.addEventListener('change', actualizarCampoDireccion);
   }
 
-  // Manejar clic en botones "Pedir" con delegación de eventos — así funciona
-  // también con tarjetas de producto agregadas después (ver productos.js)
+  // Manejar clic en botones "Pedir" con delegaciÃ³n de eventos â€” asÃ­ funciona
+  // tambiÃ©n con tarjetas de producto agregadas despuÃ©s (ver productos.js)
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.btn--pedir');
     if (!btn) return;
@@ -146,7 +146,7 @@ function inicializarFormularioPedido() {
     document.getElementById('pedidos').scrollIntoView({ behavior: 'smooth' });
   });
 
-  // Manejar envío del formulario
+  // Manejar envÃ­o del formulario
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -181,5 +181,5 @@ function inicializarFormularioPedido() {
   });
 }
 
-// Inicializar cuando el DOM esté listo
+// Inicializar cuando el DOM estÃ© listo
 document.addEventListener('DOMContentLoaded', inicializarFormularioPedido);
